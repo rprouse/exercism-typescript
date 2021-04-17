@@ -1,5 +1,6 @@
 export default class Robot {
   private static allNames: Array<string> = Robot.createAllPossibleNames();
+  private static unusedNames: Array<string> = Robot.allNames.slice();
   private _name: string;
 
   constructor() {
@@ -15,13 +16,13 @@ export default class Robot {
   }
 
   public static releaseNames(): void {
-    Robot.allNames = Robot.createAllPossibleNames();
+    Robot.unusedNames = Robot.allNames.slice();
   }
 
   private static createUniqueName(): string {
-    const i = Robot.getRandomInt(0, Robot.allNames.length);
-    const name = Robot.allNames[i];
-    Robot.allNames.splice(i, 1);  // delete from names
+    const i = Robot.getRandomInt(0, Robot.unusedNames.length);
+    const name = Robot.unusedNames[i];
+    Robot.unusedNames.splice(i, 1);  // delete from names
     return name;
   }
 
