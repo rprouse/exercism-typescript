@@ -1,0 +1,12 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "yarn: test current file",
+			"type": "shell",
+			"group": "test",
+			"problemMatcher": [],
+			"command": "yarn lint:types && yarn run jest --no-cache --findRelatedTests ${relativeFile}"
+		}
+	]
+}
