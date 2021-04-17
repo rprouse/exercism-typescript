@@ -1,19 +1,17 @@
+type Array2D = number[][];
+
 class Matrix {
-  readonly rows: number[][];
-  readonly columns: number[][];
+  readonly rows: Array2D;
+  readonly columns: Array2D;
 
   constructor(matrix: string) {
     this.rows = matrix.split('\n')
       .map(r => r.split(' ').map(i => parseInt(i)));
 
     // Pivot rows assuming all rows are of equal length
-    this.columns = [];
-    for(let r = 0; r < this.rows[0].length; r++) {
-      this.columns.push([]);
-      for(let c = 0; c < this.rows.length; c++) {
-        this.columns[r].push(this.rows[c][r]);
-      }
-    }
+    this.columns = this.rows.map((_, col) =>
+      this.rows.map((row) => row[col])
+    );
   }
 }
 
