@@ -31,12 +31,8 @@ export default class Robot {
     const allNames = new Array<string>();
     for(let l1 = 0; l1 < 26; l1++) {
       for(let l2 = 0; l2 < 26; l2++) {
-        for(let n1 = 0; n1 < 10; n1++) {
-          for(let n2 = 0; n2 < 10; n2++) {
-            for(let n3 = 0; n3 < 10; n3++) {
-              allNames.push(`${String.fromCharCode(A + l1)}${String.fromCharCode(A + l2)}${n1}${n2}${n3}`);
-            }
-          }
+        for(let n = 0; n <= 999; n++) {
+          allNames.push(`${String.fromCharCode(A + l1)}${String.fromCharCode(A + l2)}${`${n}`.padStart(3, '0')}`);
         }
       }
     }
