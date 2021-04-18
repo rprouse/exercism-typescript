@@ -5,18 +5,16 @@ export default class BinarySearch {
   {
     // Check if the array is sorted
     const sorted = array.slice().sort((a, b) => a - b);
-    if (sorted.some((val, idx) => array[idx] !== val))
-      return;
-
-    this.array = array;
+    if (sorted.every((val, idx) => array[idx] === val))
+      this.array = array;
   }
 
   indexOf = (val: number): number => {
     if (this.array !== undefined && this.array !== null) {
       let start = 0;
-      let end = this.array?.length - 1;
-      let middle = Math.floor(end / 2);
+      let end = this.array.length - 1;
       while (start < end) {
+        const middle = Math.floor((end - start) / 2) + start;
         if (val === this.array[middle]) {
           return middle;
         } else if (val < this.array[middle]) {
@@ -24,7 +22,6 @@ export default class BinarySearch {
         } else {
           start = middle + 1;
         }
-        middle = Math.floor((end - start) / 2) + start;
       }
     }
     return -1;
