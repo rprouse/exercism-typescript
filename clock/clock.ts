@@ -2,6 +2,9 @@ type Time = { hour: number, minute: number };
 
 const MINUTES_IN_DAY = 24 * 60;
 
+const pad = (n: number): string =>
+  n.toString().padStart(2, '0');
+
 export default class Clock {
   private time: Time;
 
@@ -10,34 +13,25 @@ export default class Clock {
   }
 
   toString = (): string =>
-    `${Clock.paddingString(this.time.hour)}:${Clock.paddingString(this.time.minute)}`;
+    `${pad(this.time.hour)}:${pad(this.time.minute)}`;
 
-  plus = (minutes: number): Clock => {
-    this.time = Clock.calculate(this.totalMinutes() + minutes);
-    return this;
-  }
+  plus = (minutes: number): Clock =>
+    new Clock(this.time.hour, this.time.minute + minutes);
 
-  minus = (minutes: number): Clock => {
-    this.time = Clock.calculate(this.totalMinutes() - minutes);
-    return this;
-  }
+  minus = (minutes: number): Clock =>
+    new Clock(this.time.hour, this.time.minute - minutes);
 
   equals = (other: Clock): boolean =>
     this.time.hour === other.time.hour &&
     this.time.minute === other.time.minute;
 
-  private totalMinutes = (): number =>
-    this.time.hour * 60 + this.time.minute;
-
   private static calculate(minutes: number): Time {
     while(minutes < 0) {
       minutes += MINUTES_IN_DAY;
     }
-    const hour = Math.floor(minutes / 60) % 24;
-    const mint = minutes % 60;
-    return { hour: hour, minute: mint };
+    return {
+      hour: Math.floor(minutes / 60) % 24,
+      minute: minutes % 60
+    };
   }
-
-  private static paddingString = (num: number): string =>
-    num.toString().padStart(2, '0');
 }
