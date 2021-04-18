@@ -9,19 +9,19 @@ export default class HandShake {
 
   constructor(num: number) {
     this._commands = [];
-    if ((num & WINK) === WINK) {
+    if (num & WINK) {
       this._commands.push('wink');
     }
-    if ((num & DOUBLE_BLINK) === DOUBLE_BLINK) {
+    if (num & DOUBLE_BLINK) {
       this._commands.push('double blink');
     }
-    if ((num & CLOSE_EYES) === CLOSE_EYES) {
+    if (num & CLOSE_EYES) {
       this._commands.push('close your eyes');
     }
-    if ((num & JUMP) === JUMP) {
+    if (num & JUMP) {
       this._commands.push('jump');
     }
-    if ((num & REVERSE) === REVERSE) {
+    if (num & REVERSE) {
       this._commands.reverse();
     }
   }
