@@ -2,7 +2,7 @@ type Grade = Array<string>;
 type Roster = Map<string, Grade>;
 
 export default class GradeSchool {
-  private _roster: Roster = new Map<string, Grade>();
+  private _roster: Roster = new Map();
 
   addStudent(name: string, grade: number): void {
     // A student can't be in another grade
@@ -12,7 +12,7 @@ export default class GradeSchool {
         val.splice(idx);
     });
 
-    const gradeStr = `${grade}`;
+    const gradeStr = grade.toString();
     if(this._roster.has(gradeStr)) {
       this._roster.get(gradeStr)?.push(name);
     } else {
@@ -21,7 +21,7 @@ export default class GradeSchool {
   }
 
   studentRoster(): Roster {
-    const roster: Roster = new Map<string, Grade>();
+    const roster: Roster = new Map();
     this._roster.forEach((val, key) => {
       roster.set(key, val.slice().sort());
     });
@@ -29,7 +29,7 @@ export default class GradeSchool {
   }
 
   studentsInGrade(grade: number): string[] {
-    const gradeStr = `${grade}`;
+    const gradeStr = grade.toString();
     const roster = this._roster.get(gradeStr)?.slice().sort();
     return roster === undefined ? [] : roster;
   }
