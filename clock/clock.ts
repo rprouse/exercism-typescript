@@ -26,8 +26,8 @@ export default class Clock {
     this.time.minute === other.time.minute;
 
   private static calculate(minutes: number): Time {
-    while(minutes < 0) {
-      minutes += MINUTES_IN_DAY;
+    if (minutes < 0) {
+      minutes = minutes % MINUTES_IN_DAY + MINUTES_IN_DAY;
     }
     return {
       hour: Math.floor(minutes / 60) % 24,
