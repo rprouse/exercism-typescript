@@ -4,16 +4,15 @@ export default class BinarySearchTree {
 
   constructor(public data: number) { }
 
-  insert(value: number): void {
+  insert(value: number): BinarySearchTree {
     if (value <= this.data) {
-      this.left ?
-        this.left.insert(value) :
-        this.left = new BinarySearchTree(value);
+      this.left = this.left?.insert(value) ??
+        new BinarySearchTree(value);
     } else {
-        this.right ?
-          this.right.insert(value) :
-          this.right = new BinarySearchTree(value);
+        this.right = this.right?.insert(value) ??
+        new BinarySearchTree(value);
     }
+    return this;
   }
 
   each(cb: (_: number) => void): void {
