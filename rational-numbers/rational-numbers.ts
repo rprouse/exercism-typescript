@@ -62,7 +62,7 @@ export default class Rational {
   }
 
   expreal(n: number): number {
-    return n ** (this.num / this.den);
+    return 2 ** (Math.log2(n ** this.num) / this.den);
   }
 
   reduce(): Rational {
