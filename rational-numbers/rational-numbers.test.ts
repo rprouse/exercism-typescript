@@ -1,22 +1,40 @@
 import Rational from './rational-numbers'
 
+describe('Greatest Common Denominator', () => {
+  it('Calculates positive GCD', () => {
+    expect(Rational.gcd(48, 18)).toBe(6)
+  })
+
+  it('Calculates negative GCD', () => {
+    expect(Rational.gcd(48, -18)).toBe(6)
+  })
+
+  it('Calculates GCD with A zero', () => {
+    expect(Rational.gcd(0, 2)).toBe(2)
+  })
+
+  it('Calculates GCD with B zero', () => {
+    expect(Rational.gcd(2, 0)).toBe(2)
+  })
+})
+
 describe('Addition', () => {
   it('Add two positive rational numbers', () => {
     const expected = new Rational(7, 6)
     expect(new Rational(1, 2).add(new Rational(2, 3))).toEqual(expected)
   })
 
-  xit('Add a positive rational number and a negative rational number', () => {
+  it('Add a positive rational number and a negative rational number', () => {
     const expected = new Rational(-1, 6)
     expect(new Rational(1, 2).add(new Rational(-2, 3))).toEqual(expected)
   })
 
-  xit('Add two negative rational numbers', () => {
+  it('Add two negative rational numbers', () => {
     const expected = new Rational(-7, 6)
     expect(new Rational(-1, 2).add(new Rational(-2, 3))).toEqual(expected)
   })
 
-  xit('Add a rational number to its additive inverse', () => {
+  it('Add a rational number to its additive inverse', () => {
     const expected = new Rational(0, 1)
     expect(new Rational(1, 2).add(new Rational(-1, 2))).toEqual(expected)
   })
