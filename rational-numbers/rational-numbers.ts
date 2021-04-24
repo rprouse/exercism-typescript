@@ -51,15 +51,18 @@ export default class Rational {
   }
 
   abs(): Rational {
-    return this;
+    return new Rational(Math.abs(this.num), Math.abs(this.den));
   }
 
-  exprational(_: number): Rational {
-    return this;
+  exprational(n: number): Rational {
+    n = Math.abs(n);
+    const num = this.num ** n;
+    const den = this.den ** n;
+    return new Rational(num, den);
   }
 
-  expreal(_: number): Rational {
-    return this;
+  expreal(n: number): number {
+    return n;
   }
 
   reduce(): Rational {
