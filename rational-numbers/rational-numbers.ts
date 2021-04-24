@@ -4,6 +4,11 @@ export default class Rational {
     const gcd = Rational.gcd(this.num, this.den);
     this.num /= gcd;
     this.den /= gcd;
+
+    if (this.den < 0) {
+      this.num *= -1;
+      this.den *= -1;
+    }
   }
 
   public static gcd(a: number, b: number): number {
@@ -27,16 +32,22 @@ export default class Rational {
     return new Rational(num, den);
   }
 
-  sub(_: Rational): Rational {
-    return this;
+  sub(o: Rational): Rational {
+    const num = this.num * o.den - o.num * this.den;
+    const den = this.den * o.den;
+    return new Rational(num, den);
   }
 
-  mul(_: Rational): Rational {
-    return this;
+  mul(o: Rational): Rational {
+    const num = this.num * o.num;
+    const den = this.den * o.den;
+    return new Rational(num, den);
   }
 
-  div(_: Rational): Rational {
-    return this;
+  div(o: Rational): Rational {
+    const num = this.num * o.den;
+    const den = this.den * o.num;
+    return new Rational(num, den);
   }
 
   abs(): Rational {

@@ -41,76 +41,76 @@ describe('Addition', () => {
 })
 
 describe('Subtraction', () => {
-  xit('Subtract two positive rational numbers', () => {
+  it('Subtract two positive rational numbers', () => {
     const expected = new Rational(-1, 6)
     expect(new Rational(1, 2).sub(new Rational(2, 3))).toEqual(expected)
   })
 
-  xit('Subtract a positive rational number and a negative rational number', () => {
+  it('Subtract a positive rational number and a negative rational number', () => {
     const expected = new Rational(7, 6)
     expect(new Rational(1, 2).sub(new Rational(-2, 3))).toEqual(expected)
   })
 
-  xit('Subtract two negative rational numbers', () => {
+  it('Subtract two negative rational numbers', () => {
     const expected = new Rational(1, 6)
     expect(new Rational(-1, 2).sub(new Rational(-2, 3))).toEqual(expected)
   })
 
-  xit('Subtract a rational number from itself', () => {
+  it('Subtract a rational number from itself', () => {
     const expected = new Rational(0, 1)
     expect(new Rational(1, 2).sub(new Rational(1, 2))).toEqual(expected)
   })
 })
 
 describe('Multiplication', () => {
-  xit('Multiply two positive rational numbers', () => {
+  it('Multiply two positive rational numbers', () => {
     const expected = new Rational(1, 3)
     expect(new Rational(1, 2).mul(new Rational(2, 3))).toEqual(expected)
   })
 
-  xit('Multiply a negative rational number by a positive rational number', () => {
+  it('Multiply a negative rational number by a positive rational number', () => {
     const expected = new Rational(-1, 3)
     expect(new Rational(-1, 2).mul(new Rational(2, 3))).toEqual(expected)
   })
 
-  xit('Multiply two negative rational numbers', () => {
+  it('Multiply two negative rational numbers', () => {
     const expected = new Rational(1, 3)
     expect(new Rational(-1, 2).mul(new Rational(-2, 3))).toEqual(expected)
   })
 
-  xit('Multiply a rational number by its reciprocal', () => {
+  it('Multiply a rational number by its reciprocal', () => {
     const expected = new Rational(1, 1)
     expect(new Rational(1, 2).mul(new Rational(2, 1))).toEqual(expected)
   })
 
-  xit('Multiply a rational number by 1', () => {
+  it('Multiply a rational number by 1', () => {
     const expected = new Rational(1, 2)
     expect(new Rational(1, 2).mul(new Rational(1, 1))).toEqual(expected)
   })
 
-  xit('Multiply a rational number by 0', () => {
+  it('Multiply a rational number by 0', () => {
     const expected = new Rational(0, 1)
     expect(new Rational(1, 2).mul(new Rational(0, 1))).toEqual(expected)
   })
 })
 
 describe('Division', () => {
-  xit('Divide two positive rational numbers', () => {
+  it('Divide two positive rational numbers', () => {
     const expected = new Rational(3, 4)
     expect(new Rational(1, 2).div(new Rational(2, 3))).toEqual(expected)
   })
 
-  xit('Divide a positive rational number by a negative rational number', () => {
+  it('Divide a positive rational number by a negative rational number', () => {
     const expected = new Rational(-3, 4)
     expect(new Rational(1, 2).div(new Rational(-2, 3))).toEqual(expected)
   })
 
-  xit('Divide two negative rational numbers', () => {
+  it('Divide two negative rational numbers', () => {
     const expected = new Rational(3, 4)
     expect(new Rational(-1, 2).div(new Rational(-2, 3))).toEqual(expected)
   })
 
-  xit('Divide a rational number by 1', () => {
+  it('Divide a rational number by 1', () => {
     const expected = new Rational(1, 2)
     expect(new Rational(1, 2).div(new Rational(1, 1))).toEqual(expected)
   })
