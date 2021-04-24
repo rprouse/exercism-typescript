@@ -6,16 +6,16 @@ export default class BinarySearchTree {
 
   insert(value: number): void {
     if (value <= this.data) {
-      if (this.left === undefined) {
-        this.left = new BinarySearchTree(value);
-      } else {
+      if (this.left) {
         this.left.insert(value);
+      } else {
+        this.left = new BinarySearchTree(value);
       }
     } else {
-        if (this.right === undefined) {
-          this.right = new BinarySearchTree(value);
-        } else {
+        if (this.right) {
           this.right.insert(value);
+        } else {
+          this.right = new BinarySearchTree(value);
         }
     }
   }
