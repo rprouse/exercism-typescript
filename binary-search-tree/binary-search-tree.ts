@@ -6,23 +6,19 @@ export default class BinarySearchTree {
 
   insert(value: number): void {
     if (value <= this.data) {
-      if (this.left) {
-        this.left.insert(value);
-      } else {
+      this.left ?
+        this.left.insert(value) :
         this.left = new BinarySearchTree(value);
-      }
     } else {
-        if (this.right) {
-          this.right.insert(value);
-        } else {
+        this.right ?
+          this.right.insert(value) :
           this.right = new BinarySearchTree(value);
-        }
     }
   }
 
-  each(callback: (data: number) => void): void {
-    this.left?.each(callback);
-    callback(this.data);
-    this.right?.each(callback);
+  each(cb: (_: number) => void): void {
+    this.left?.each(cb);
+    cb(this.data);
+    this.right?.each(cb);
   }
 }
