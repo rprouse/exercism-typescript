@@ -5,8 +5,7 @@ export default class Words {
       .toLowerCase()
       .split(/\s/)
       .filter((word) => word && word.length > 0)
-      .forEach((word) =>
-        counts.set(word, counts.has(word) ? counts.get(word)! + 1 : 1)
+      .forEach((word) => counts.set(word, (counts.get(word) || 0) + 1)
     );
     return counts;
   }
