@@ -13,13 +13,13 @@ const lines = [
 export default class FoodChain {
   static verse(v: number): string {
     v = v - 1;
-    let song = 'I know an old lady who swallowed a ' + food[v] + '.\n';
+    let song = `I know an old lady who swallowed a ${food[v]}.\n`;
     if (v >= 1) song += lines[v - 1] + '\n';
 
     if (v === 7) return song; // Last verse kills her
 
     for (let j = v; j > 0; j--) {
-      song += 'She swallowed the ' + food[j] + ' to catch the ' + food[j - 1];
+      song += `She swallowed the ${food[j]} to catch the ${food[j - 1]}`;
       if (j === 2) {
         song += ' that wriggled and jiggled and tickled inside her';
       }
@@ -31,7 +31,8 @@ export default class FoodChain {
   static verses(i: number, j: number): string {
     let song = '';
     for (let v = i; v <= j; v++) {
-      song += FoodChain.verse(v) + '\n';
+      song += FoodChain.verse(v);
+      if(v < j) song += '\n';
     }
     return song;
   }
