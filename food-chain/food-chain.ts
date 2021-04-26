@@ -10,17 +10,20 @@ const lines = [
     "She's dead, of course!"
 ];
 
+const range = (start: number, end: number): number[] =>
+  Array.from({length: (end - start)}, (_, k) => k + start);
+
 export default class FoodChain {
-  static verse(v: number): string {
-    v = v - 1;
-    let song = `I know an old lady who swallowed a ${food[v]}.\n`;
-    if (v >= 1) song += lines[v - 1] + '\n';
+  static verse(verse: number): string {
+    verse--;
+    let song = `I know an old lady who swallowed a ${food[verse]}.\n`;
+    if (verse >= 1) song += lines[verse - 1] + '\n';
 
-    if (v === 7) return song; // Last verse kills her
+    if (verse === 7) return song; // Last verse kills her
 
-    for (let j = v; j > 0; j--) {
-      song += `She swallowed the ${food[j]} to catch the ${food[j - 1]}`;
-      if (j === 2) {
+    for (let idx = verse; idx > 0; idx--) {
+      song += `She swallowed the ${food[idx]} to catch the ${food[idx - 1]}`;
+      if (idx === 2) {
         song += ' that wriggled and jiggled and tickled inside her';
       }
       song += '.\n';
@@ -28,12 +31,6 @@ export default class FoodChain {
     return song + "I don't know why she swallowed the fly. Perhaps she'll die.\n";
   }
 
-  static verses(i: number, j: number): string {
-    let song = '';
-    for (let v = i; v <= j; v++) {
-      song += FoodChain.verse(v);
-      if(v < j) song += '\n';
-    }
-    return song;
-  }
+  static verses = (start: number, end: number): string =>
+    range(start, end + 1).map(v => FoodChain.verse(v)).join('\n');
 }
