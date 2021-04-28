@@ -14,21 +14,25 @@ const isAlphaNumeric = (str: string): boolean => {
          (ascii >= ZERO && ascii <= NINE);
 }
 
+const encodeDecode = (str: string): string[] =>
+  str.toLowerCase()
+  .split('')
+  .filter(c => isAlphaNumeric(c))
+  .map(c => isNumeric(c) ? c : String.fromCharCode(A + Z - c.charCodeAt(0)));
+
+const insertSpaces = (array: string[]): string[] => {
+  for(let idx = 5; idx < array.length; idx += 6) {
+    array.splice(idx, 0, ' ');
+  }
+  return array;
+}
+
 export default class AtbashCipher {
   encode(plaintext: string) : string {
-    const test = plaintext
-      .toLowerCase()
-      .split('')
-      .filter(c => isAlphaNumeric(c))
-      .map(c => isNumeric(c) ? c : String.fromCharCode(A + Z - c.charCodeAt(0)));
-
-    for(let idx = 5; idx < test.length; idx += 6) {
-      test.splice(idx, 0, ' ');
-    }
-    return test.join('');
+    const encrypted = encodeDecode(plaintext);
+    return insertSpaces(encrypted).join('');
   }
 
-  decode(encrypted: string) : string {
-    return encrypted;
-  }
+  decode = (encrypted: string) : string =>
+    encodeDecode(encrypted).join('');
 }
