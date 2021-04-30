@@ -1,10 +1,10 @@
 {
-  "name": "@rprouse/typescript",
+  "name": "@exercism/typescript",
   "description": "Exercism exercises in Typescript.",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/rprouse/exercism-typescript"
+    "url": "https://github.com/exercism/typescript"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
