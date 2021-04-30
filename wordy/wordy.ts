@@ -9,6 +9,8 @@ export class WordProblem {
 
     const parts = this.question
       .substring(8)
+      .replace(/ by/g, 'by')
+      .replace(/ to the/g, 'tothe')
       .split(' ');
 
     if (parts.length < 3)
@@ -24,21 +26,15 @@ export class WordProblem {
         case "minus":
           result -= parseInt(parts[i++]);
           break;
-        case "multiplied":
-          if (i === parts.length - 1 || parts[i++] !== 'by')
-            throw new ArgumentError();
+        case "multipliedby":
           result *= parseInt(parts[i++]);
           break;
-        case "divided":
-          if (i === parts.length - 1 || parts[i++] !== 'by')
-            throw new ArgumentError();
+        case "dividedby":
           result /= parseInt(parts[i++]);
           break;
-        case "raised":
-          if (i === parts.length - 3 || parts[i++] !== 'to' || parts[i++] != 'the')
-            throw new ArgumentError();
+        case "raisedtothe":
           result = result ** parseInt(parts[i++]);
-          if (!parts[i++].startsWith('power'))
+          if (i === parts.length || !parts[i++].startsWith('power'))
             throw new ArgumentError();
           break;
         default:
