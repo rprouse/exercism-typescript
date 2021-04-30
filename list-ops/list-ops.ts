@@ -10,15 +10,27 @@ export default class List<T> {
   }
 
   length(): number {
-    return 0;
+    return this.values.length;
   }
 
-  append(_: List<T>): List<T> {
-    return this;
+  append(list: List<T>): List<T> {
+    const result = new List(this.values);
+    list.values.forEach((item) => result.values.push(item));
+    return result;
   }
 
-  concat(_: List<T> | List<List<T>>): List<T> {
-    return this;
+  concat(list: List<T> | List<List<T>>): List<T> {
+    const result = new List<T>(this.values);
+    list.values.forEach((item: T | List<T>) => {
+      if (item instanceof List) {
+        const innerList: List<T> = item;
+        result.append(item);
+      } else {
+        const innerItem: T = item;
+        result.values.push(item);
+      }
+    });
+    return result;
   }
 
   filter(_: FilterOp<T>): List<T> {

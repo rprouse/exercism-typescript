@@ -7,13 +7,13 @@ describe('append entries to a list and return the new list', () => {
     expect(list1.append(list2)).toEqual(new List())
   })
 
-  xit('empty list to list', () => {
+  it('empty list to list', () => {
     const list1 = new List([1, 2, 3, 4])
     const list2 = new List<number>()
     expect(list1.append(list2)).toEqual(list1)
   })
 
-  xit('non-empty lists', () => {
+  it('non-empty lists', () => {
     const list1 = new List([1, 2])
     const list2 = new List([2, 3, 4, 5])
     expect(list1.append(list2).values).toEqual([1, 2, 2, 3, 4, 5])
@@ -21,13 +21,13 @@ describe('append entries to a list and return the new list', () => {
 })
 
 describe('concat lists and lists of lists into new list', () => {
-  xit('empty list', () => {
+  it('empty list', () => {
     const list1 = new List()
     const list2 = new List([])
     expect(list1.concat(list2).values).toEqual([])
   })
 
-  xit('list of lists', () => {
+  it('list of lists', () => {
     const list1 = new List([1, 2])
     const list2 = new List([3])
     const list3 = new List([])
