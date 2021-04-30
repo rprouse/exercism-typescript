@@ -41,16 +41,12 @@ export default class List<T> {
 
   map(mapOp: MapOp<T>): List<T> {
     const result = new List<T>();
-    this.values.forEach(item => {
-      result.add(mapOp(item));
-    });
+    this.values.forEach(item => result.add(mapOp(item)));
     return result;
   }
 
   foldl(foldOp: FoldOp<T>, accumulator: T): T {
-    this.values.forEach(item => {
-      accumulator = foldOp(accumulator, item);
-    });
+    this.values.forEach(item => accumulator = foldOp(accumulator, item));
     return accumulator;
   }
 
