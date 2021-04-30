@@ -71,6 +71,11 @@ describe('Word Problem', () => {
     expect(new WordProblem(question).answer()).toEqual(2)
   })
 
+  it('powers', () => {
+    const question = 'What is 2 raised to the 5th power?'
+    expect(new WordProblem(question).answer()).toEqual(32)
+  })
+
   it('too advanced', () => {
     const question = 'What is 53 cubed?'
     const problem = new WordProblem(question)

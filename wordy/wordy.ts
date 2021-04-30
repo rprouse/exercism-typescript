@@ -34,6 +34,13 @@ export class WordProblem {
             throw new ArgumentError();
           result /= parseInt(parts[i++]);
           break;
+        case "raised":
+          if (i === parts.length - 3 || parts[i++] !== 'to' || parts[i++] != 'the')
+            throw new ArgumentError();
+          result = result ** parseInt(parts[i++]);
+          if (!parts[i++].startsWith('power'))
+            throw new ArgumentError();
+          break;
         default:
           throw new ArgumentError()
       }
