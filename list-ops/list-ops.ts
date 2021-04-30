@@ -22,13 +22,7 @@ export default class List<T> {
   concat(list: List<T> | List<List<T>>): List<T> {
     const result = new List<T>(this.values);
     list.values.forEach((item: T | List<T>) => {
-      if (item instanceof List) {
-        const innerList: List<T> = item;
-        result.append(item);
-      } else {
-        const innerItem: T = item;
-        result.values.push(item);
-      }
+      item instanceof List ? result.append(item) : result.values.push(item);
     });
     return result;
   }
